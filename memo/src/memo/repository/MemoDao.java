@@ -17,12 +17,12 @@ public class MemoDao {
 	
 	public void write(String content) {
 		String sql = "insert into memo values(memo_seq.nextval,?,sysdate)";
-		Object[] param = {content};
+		Object[] param = {content}; // ?는 object[]로 받아라
 		jdbcTemplate.update(sql,param);
 	}
 	
 	public List<MemoDto> list() {
-		String sql ="select * from memo";
+		String sql ="select * from memo order by no";
 		RowMapper<MemoDto> mapper = new RowMapper<MemoDto>() {
 		
 			@Override
